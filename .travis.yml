@@ -4,12 +4,6 @@ language: generic
 services:
   - docker
 
-before_install:
-  - docker build -t george7a/react-test -f ./client/Dockerfile.dev ./client
-
-script:
-  - docker run -e CI=true george7a/react-test npm test
-
 after_success:
   - docker build -t george7a/multi-client ./client
   - docker build -t george7a/multi-nginx ./nginx
